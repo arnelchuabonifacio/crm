@@ -7,7 +7,7 @@
         <tr>
             <th>Domain</th>
             <td>
-                <a href="{{ route('projects.credentials.show',['project'=>$project->id,'credential'=>$credential->id]) }}">{{ $credential->title }}</a>
+                <a href="{{ route('projects.credentials.show',['project'=>$project->id,'credential'=>$credential->url]) }}">{{ $credential->url }}</a>
             </td>
         </tr>
         <tr>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <th>Other Description</th>
-            <td>{{ $credential->extra_info }}</td>
+            <td>{{ $credential->others }}</td>
         </tr>
     </table>
 </div>

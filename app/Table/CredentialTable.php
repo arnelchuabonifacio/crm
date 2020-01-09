@@ -17,7 +17,8 @@ class CredentialTable extends Table
     }
 
     protected $columns = [
-        'title' => 'Domain',
+        'title' => 'Title',
+        'url' => 'Domain',
         'username' => 'User Name',
         'password' => 'Password',
     ];
@@ -28,7 +29,10 @@ class CredentialTable extends Table
 
         switch ($column) {
             case 'title':
-                $data =  '<a target="_blank" href="'. $item->url .'">'.$item->title.'</a>';
+                $data =  $item->title;
+            break;
+            case 'url':
+                $data =  '<a target="_blank" href="'. $item->url .'">'.$item->url.'</a>';
                 break;
             
             default:
@@ -45,13 +49,13 @@ class CredentialTable extends Table
         $user = Auth::user();
         if ($user->can('credentials.view', [$this->project, $credential])) {
             $links['view'] = [
-                'title' => 'Details',
+                'title' => '<i class="fa fa-eye" aria-hidden="true" style="color: #22c65b;font-size: 20px;padding: 10px 0;"></i>',
                 'link' => route('projects.credentials.show', ['project'=>$this->project->id,'credential'=>$credential->id])
             ];
         }
         if ($user->can('credentials.update', [$this->project, $credential])) {
             $links['edit'] = [
-                'title' => 'Edit',
+                'title' => '<i class="fa fa-edit" aria-hidden="true" style="font-size: 20px;padding: 10px 0;"></i>',
                 'link' => route('projects.credentials.edit', ['project'=>$this->project->id,'credential'=>$credential->id])
             ];
         }

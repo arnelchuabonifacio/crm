@@ -24,6 +24,7 @@
     @endif
 </div>
 <div class="columns">
+@role('admin')
     <div class="column is-6">
         <div class="field">
             <label class="label">
@@ -39,6 +40,23 @@
                     </select>
                 </div>
             </div>
+            @endrole
+            @role('client')
+            <div class="column is-6 " style="display:none">
+                    <div class="field">
+                        <label class="label">
+                            Client
+                            <span class="has-text-danger" title="Field required">*</span>
+                        </label>
+                        <div class="control">
+                            <div class="select is-fullwidth {{ ($errors->has('client_id')) ? 'is-danger' : '' }}">
+                                <select required name="client_id" style="display:none">
+                                        <option value="{{ Auth::user()->id }}" > {{Auth::user()->name}} </option>
+                                </select>
+                            </div>
+                        </div>
+                        @endrole
+
             @if($errors->has('client_id'))
                 <p class="help is-danger">{{ $errors->get('client_id') }}</p>
             @endif

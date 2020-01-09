@@ -191,7 +191,7 @@ class Table
                 $actionsHtml .= '<div><a href="#"
                 class="level-item has-text-danger"
                 onclick="event.preventDefault();document.getElementById(\''.$randomString.'-delete-form-'.$item->id.'\').submit();"
-                >Delete</a>
+                ><i class="fa fa-trash" aria-hidden="true" style="font-size: 20px;padding: 10px 0;"></i></a>
                 <form
                 id="'.$randomString.'-delete-form-'. $item->id .'"
                 action="'.$action['link'].'"

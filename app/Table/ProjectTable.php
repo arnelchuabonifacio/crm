@@ -40,7 +40,7 @@ class ProjectTable extends Table
 
         switch ($column) {
             case 'title':
-                $data =  '<a href="'. route('projects.tasks.index', $project->id) .'">'. $project->title .'</a>';
+                $data =   $project->title ;
                 break;
 
             case 'status':
@@ -71,18 +71,6 @@ class ProjectTable extends Table
     {
         $links = [];
         $user = Auth::user();
-        if ($user->can('projects.view', $item)) {
-            $links['details'] = [
-                'title' => 'Details',
-                'link' => route('projects.show', $item->id)
-            ];
-        }
-        if ($user->can('projects.update', $item)) {
-            $links['edit'] = [
-                'title' => 'Edit',
-                'link' => route('projects.edit', $item->id)
-            ];
-        }
         if ($user->can('credentials.index', $item, Credential::class)) {
             $links['credential'] = [
                 'title' => 'Credentials',
@@ -94,13 +82,25 @@ class ProjectTable extends Table
                 'title' => 'New Credential',
                 'link' => route('projects.credentials.create', $item->id)
             ];
-        }
-        if ($user->can('tasks.create', $item, Task::class)) {
-            $links['new-task'] = [
-                'title' => 'New Task',
-                'link' => route('projects.tasks.create', $item->id)
+        if ($user->can('projects.view', $item)) {
+            $links['details'] = [
+                'title' => '<i class="fa fa-eye" aria-hidden="true" style="color: #23d160;font-size: 20px;padding: 10px 0;"></i>',
+                'link' => route('projects.show', $item->id)
             ];
         }
+        if ($user->can('projects.update', $item)) {
+            $links['edit'] = [
+                'title' => '<i class="fa fa-edit" aria-hidden="true" style="font-size: 20px;padding: 10px 0;"></i>',
+                'link' => route('projects.edit', $item->id)
+            ];
+        }
+        }
+        // if ($user->can('tasks.create', $item, Task::class)) {
+        //     $links['new-task'] = [
+        //         'title' => 'New Task',
+        //         'link' => route('projects.tasks.create', $item->id)
+        //     ];
+        // }
         if ($user->can('projects.delete', $item)) {
             $links['delete'] = [
                 'title' => 'Delete',

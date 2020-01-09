@@ -5,7 +5,7 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </a>
         @endif
-        <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name', 'Laravel') }}</a>
+        <a href="{{ url('/') }}" class="navbar-item">CRM TEST</a>
         <div class="navbar-burger burger" data-target="navMenu">
             <span></span>
             <span></span>
@@ -18,8 +18,6 @@
 
         <div class="navbar-end">
             @if (Auth::guest())
-                <a class="navbar-item " href="{{ route('login') }}">Login</a>
-                <a class="navbar-item " href="{{ route('register') }}">Register</a>
             @else
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link" href="#">{{ Auth::user()->name }}</a>

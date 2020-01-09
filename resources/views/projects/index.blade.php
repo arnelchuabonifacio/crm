@@ -17,6 +17,7 @@
                 <a href="{{ route('projects.create') }}" class="level-item button is-success">New Project</a>
             @endcan
         </div>
+        
     </div>
     {{ $table->display() }}
 @endsection

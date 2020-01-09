@@ -1,129 +1,93 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('content')
+    <div class="columns is-marginless is-centered">
+        <div class="column is-5">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">Login</p>
+                </header>
 
-        <title>Laravel {{ app()->version() }}</title>
+                <div class="card-content">
+                    <form class="login-form" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">E-Mail Address</label>
+                            </div>
 
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control">
+                                        <input class="input" id="email" type="email" name="email"
+                                               value="{{ old('email') }}" required autofocus>
+                                    </p>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+                                    @if ($errors->has('email'))
+                                        <p class="help is-danger">
+                                            {{ $errors->first('email') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
 
-            .full-height {
-                height: 100vh;
-            }
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Password</label>
+                            </div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control">
+                                        <input class="input" id="password" type="password" name="password" required>
+                                    </p>
 
-            .position-ref {
-                position: relative;
-            }
+                                    @if ($errors->has('password'))
+                                        <p class="help is-danger">
+                                            {{ $errors->first('password') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+                        <div class="field is-horizontal">
+                            <div class="field-label"></div>
 
-            .content {
-                text-align: center;
-            }
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control">
+                                        <label class="checkbox">
+                                            <input type="checkbox"
+                                                   name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-            .title {
-                font-size: 84px;
-            }
+                        <div class="field is-horizontal">
+                            <div class="field-label"></div>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+                            <div class="field-body">
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button type="submit" class="button is-primary">Login</button>
+                                    </div>
 
-            .versioninfo {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-            }
-
-            .framwork_title {
-                font-weight: 600;
-                padding-top: 20px;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                    <p class="versioninfo">Version {{ app()->version() }}</p>
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-
-                <div class="foundation_button_test">
-                    <p class="framwork_title">Bulma 0.6.1</p>
-                    <p class="framwork_title">Bulma Extension 0.5.2</p>
-
-                    <div class="block">
-                        <a class="button is-primary">Primary</a>
-                        <a class="button is-info">Info</a>
-                        <a class="button is-success">Success</a>
-                        <a class="button is-warning">Warning</a>
-                        <a class="button is-danger">Danger</a>
-                    </div>
+                                    <div class="control">
+                                        <a href="{{ route('password.request') }}">
+                                            Forgot Your Password?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection

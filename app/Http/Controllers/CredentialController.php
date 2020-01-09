@@ -44,7 +44,7 @@ class CredentialController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'url' => 'required|url',
+            'url' => 'required',
             'username' => 'required',
             'password' => 'required'
         ]);
@@ -92,7 +92,7 @@ class CredentialController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'url' => 'required|url',
+            'url' => 'required',
             'username' => 'required',
             'password' => 'required'
         ]);

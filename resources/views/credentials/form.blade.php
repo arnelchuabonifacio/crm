@@ -21,7 +21,7 @@
                 <span class="has-text-danger" title="Field required">*</span>
             </label>
             <div class="control">
-                <input required class="input {{ ($errors->has('url')) ? 'is-danger' : '' }}" name="url" type="url" value="{{ old('url') ? old('url') : $credential->url }}">
+                <input required class="input {{ ($errors->has('url')) ? 'is-danger' : '' }}" name="url" type="text" value="{{ old('url') ? old('url') : $credential->url }}">
             </div>
             @if($errors->has('url'))
             <p class="help is-danger">{{ $errors->first('url') }}</p>

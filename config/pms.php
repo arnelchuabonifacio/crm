@@ -25,9 +25,9 @@ return [
         'tasks.comments.create' => 'New comment',
         'tasks.comments.edit' => 'Edit comment',
 
-        'users.index' => 'All clients',
-        'users.create' => 'New client',
-        'users.edit' => 'Edit client',
+        'users.index' => 'All Clients Manager',
+        'users.create' => 'New Clients Manager',
+        'users.edit' => 'Edit Clients Manager',
 
         'dashboard' => 'Dashboard',
     ],

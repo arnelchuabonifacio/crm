@@ -16,7 +16,8 @@ class ProjectTable extends Table
     protected $columns = [
         'title' => 'Title',
         'status' => 'Status',
-        'client' => 'Client'
+        'customer' => 'Customer Name',
+        'client' => 'Client Manager'
     ];
 
     public function __construct($data)
@@ -41,6 +42,9 @@ class ProjectTable extends Table
         switch ($column) {
             case 'title':
                 $data =   $project->title ;
+                break;
+         case 'customer':
+                $data =   $project->customer_name ;
                 break;
 
             case 'status':

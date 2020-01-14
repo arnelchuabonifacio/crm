@@ -44,6 +44,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
                     'title' => 'required',
+                    'customer_name' => 'required',
                     'description' => 'required',
                     'client_id' => 'required|exists:users,id',
                     'status_id' => 'required|exists:statuses,id'
@@ -91,6 +92,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
                     'title' => 'required',
+                    'customer_name' => 'required',
                     'description' => 'required',
                     'client_id' => 'required|exists:users,id',
                     'status_id' => 'required|exists:statuses,id'

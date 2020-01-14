@@ -10,7 +10,7 @@
         <li>
             <a class="{{ isActive('users.index') }}" href="{{ route('users.index') }}">
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    Clients</a>
+                    Clients Manager</a>
         </li>
         @endrole
     </ul>
@@ -20,6 +20,13 @@
                 <i class="fa fa-tasks" aria-hidden="true"></i>
                 Projects</a>
         </li>
+        @role('admin')        
+        <li>
+            <a class="{{ isActive('clients.index') }}" href="{{ route('clients.index') }}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    Add Client</a>
+        </li>
+        @endrole
     </ul>
     @role('admin')
     <ul class="menu-list">
@@ -27,7 +34,7 @@
             <a class="{{ isActive('statuses.index') }}" href="{{ route('statuses.index') }}">
                     <i class="fa fa-bell" aria-hidden="true"></i>
                     Statuses</a>
-        </li>
+        </li> 
        
     </ul>
     <p class="menu-label">
@@ -37,7 +44,7 @@
         <li>
             <a class="{{ isActive('users.create') }}" href="{{ route('users.create') }}">
                     <i class="fa fa-plus" aria-hidden="true"></i>
-                    New Client</a>
+                    New Clients Manager</a>
         </li>
     </ul>
     @endrole

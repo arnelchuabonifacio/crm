@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 
 class UsersController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
